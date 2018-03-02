@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en" data-framework="marionettejs">
+	<head>
+		<meta charset="utf-8">
+		<title>BYOB • Degree Project</title>
+		<link rel="stylesheet" href="node_modules/todomvc-app-css/index.css">
+		<link rel="stylesheet" href="node_modules/todomvc-common/base.css">
+		<link rel="stylesheet" href="css/app.css">
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+	</head>
+	<body>
+		<section id="todoapp">
+			<header id="header"></header>
+			<section id="main"></section>
+			<section id="canvas-area"></section>
+			<div id="canvas"></div>
+			<footer id="footer"></footer>
+		</section>
+		<footer id="info">
+		</footer>
+		<script type="text/html" id="template-footer">
+			<span id="todo-count">
+				<strong><%= activeCount %></strong> <%= activeCountLabel() %>
+			</span>
+			<ul id="filters">
+				<li class="all">
+					<a href="#/">All</a>
+				</li>
+				<li class="active">
+					<a href="#/active">Active</a>
+				</li>
+				<li class="completed">
+					<a href="#/completed">Completed</a>
+				</li>
+			</ul>
+			<button id="clear-completed" <% if (!completedCount) { %>class="hidden"<% } %>>Clear completed</button>
+		</script>
+		<script type="text/html" id="template-header">
+			<h1>BYOB</h1>
+		</script>
+		<script type="text/html" id="template-todoItemView">
+			<div class="view">
+				<input class="toggle" type="checkbox" <% if (completed) { %>checked<% } %>>
+				<label><%- title %></label>
+				<button class="destroy"></button>
+			</div>
+			<input class="edit" value="<%- title %>">
+		</script>
+		<script type="text/html" id="template-todoListView">
+			<ul></ul>
+		</script>
+		<script type="text/html" id="template-canvas">
+			<img class="arrowHead" src="images/leftArrow.png" style="width: 60px;opacity: 0.5;display:inline-block;margin-right:60px;position:fixed;top:25%;left:20px;" value="previous"/>
+			<img class="arrowHead" src="images/rightArrow.png" style="width: 60px;opacity: 0.5;display:inline-block;position:fixed;top:25%;right:20px;" value="next"/>
+			
+			<img class="arrowBody" src="images/leftArrow.png" style="width: 60px;opacity: 0.5;display:inline-block;margin-right:60px;position:fixed;top:65%;left:20px;" value="previous"/>
+			<img class="arrowBody" src="images/rightArrow.png" style="width: 60px;opacity: 0.5;display:inline-block;position:fixed;top:65%;right:20px;" value="next"/>
+			
+			<button class="downloadFiles">Download Print Files</button>
+		</script>
+		<!-- vendor libraries -->
+		<script src="node_modules/todomvc-common/base.js"></script>
+		<script src="node_modules/jquery/dist/jquery.js"></script>
+		<script src="node_modules/underscore/underscore.js"></script>
+		<script src="node_modules/backbone/backbone.js"></script>
+		<script src="node_modules/backbone.localstorage/backbone.localStorage.js"></script>
+		<script src="node_modules/backbone.radio/build/backbone.radio.js"></script>
+		<script src="node_modules/backbone.marionette/lib/backbone.marionette.js"></script>
+		<script src="node_modules/handlebars/handlebars-v4.0.11.js"></script>
+		<script src="vendor/three.min.js"></script>
+		<script src="vendor/TrackballControls.js"></script>
+		<!-- application -->
+		<script src="js/DPApp.Application.js"></script>
+		<script src="js/DPApp.Todos.js"></script>
+		<script src="js/DPApp.Layout.js"></script>
+		<script src="js/DPApp.TodoList.Views.js"></script>
+		<script src="js/DPApp.Router.js"></script>
+		<script src="js/DPApp.FilterState.js"></script>
+		<script src="js/DPApp.js"></script>
+		<script src="js/mainCanvas.js"></script>
+	</body>
+</html>
